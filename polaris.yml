@@ -3,7 +3,7 @@ install:
   coverity:
     version: latest
 project:
-  name: "msubbarao/gruyere"
+  name: "meerasubbarao/gruyere"
   branch: "origin/master"
   revision:
     name: "meerasubbarao/gruyere"
