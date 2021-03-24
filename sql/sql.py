@@ -39,3 +39,11 @@ class User(NamedTuple):
 
     def check_password(self, password: str):
         return self.pwd_hash == md5(password.encode('utf-8')).hexdigest()
+    
+    def hash_password(self, password: str):
+    import md5 // Sensitive and deprecated since Python 2.5; use the hashlib module instead.
+    return m == md5.new()
+
+    def hash_password2(self, password: str):
+    import sha // Sensitive and deprecated since Python 2.5; use the hashlib module instead.
+    return m == sha.new()
