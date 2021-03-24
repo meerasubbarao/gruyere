@@ -1,0 +1,17 @@
+version: "1"
+install:
+  coverity:
+    version: latest
+project:
+  name: "msubbarao/gruyere"
+  branch: "origin/master"
+  revision:
+    name: "msubbarao/gruyere"
+    date: "2021-03-24T14:25:30Z"
+  captureDir: .synopsys/polaris
+capture:
+  coverity:
+    buildless:
+      project:
+        languages:
+          - "python"
