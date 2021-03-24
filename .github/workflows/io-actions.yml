@@ -57,7 +57,7 @@ jobs:
           unzip -j polaris_cli-linux64.zip -d /tmp
           /tmp/polaris analyze -w
     
-    # Please note that the ID in previous step was set to prescription
+    # Please note that the ID in previous   step was set to prescription
     # in order for this logic to work
     - name: Software Composition Analysis with Black Duck
       if: ${{steps.prescription.outputs.scaScan == 'true' }}
