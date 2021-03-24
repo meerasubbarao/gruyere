@@ -6,7 +6,7 @@ project:
   name: "msubbarao/gruyere"
   branch: "origin/master"
   revision:
-    name: "msubbarao/gruyere"
+    name: "meerasubbarao/gruyere"
     date: "2021-03-24T14:25:30Z"
   captureDir: .synopsys/polaris
 capture:
